@@ -1,7 +1,7 @@
-import React from "react";
+import { Box } from "@mui/system";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return <Box p={1}>Dashboard</Box>;
 };
 
 export default Dashboard;
