@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Box } from "@mui/system";
+import Chart from "./components/Chart/Chart";
 import ExchangeRate from "./components/ExchangeRate/ExchangeRate";
 import { ActionButton, CustomCard, Title } from "./Dashboard.styled";
 
@@ -81,10 +82,20 @@ const Dashboard = () => {
               </CardContent>
             </CustomCard>
           </Grid>
+          <Grid xs={12}>
+            <Chart
+              title="my title"
+              action={() => console.log("action")}
+              color={0}
+            />
+          </Grid>
         </Grid>
         <Grid xs={12} lg={6}>
           <Grid xs={12}>
             <ExchangeRate />
+          </Grid>
+          <Grid xs={12}>
+            <Chart title="my title" action={() => console.log("action")} />
           </Grid>
         </Grid>
       </Grid>
