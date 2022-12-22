@@ -1,7 +1,7 @@
 import {
+  Avatar,
   Box,
   Button,
-  Paper,
   Table,
   TableBody,
   TableCell,
@@ -12,12 +12,15 @@ import {
 } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { DateTime } from "luxon";
+import { useNavigate } from "react-router-dom";
+import { colorArray } from "../../constants";
 import { invoices } from "../../constants/invoices";
 import { currencyFormatter } from "../../utils";
 import { renderCargoStatus, renderPaymentStatus } from "./components/Chips";
 import { Title } from "./Receivables.styled";
 
 const Receivables = () => {
+  const navigate = useNavigate();
   return (
     <Box py={1} px={2} sx={{ backgroundColor: "#fbf5f5" }}>
       <Grid2 container>
@@ -26,7 +29,9 @@ const Receivables = () => {
           sx={{ display: "flex", justifyContent: "space-between" }}
         >
           <Title>Receivables</Title>
-          <Button variant="contained">+ New Invoice</Button>
+          <Button variant="contained" onClick={() => navigate("/")}>
+            + New Invoice
+          </Button>
         </Grid2>
         <Grid2 xs={5} my={2}>
           <TextField
@@ -53,13 +58,33 @@ const Receivables = () => {
                   <TableCell align="center">Actions</TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody component={Paper}>
-                {invoices.map((row) => (
+              <TableBody sx={{ bgcolor: "#ffffff" }}>
+                {invoices.map((row, index) => (
                   <TableRow
                     key={row.name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    <TableCell component="th" scope="row">
+                    <TableCell
+                      component="th"
+                      scope="row"
+                      sx={{ textAlign: "center" }}
+                    >
+                      <Avatar
+                        component="span"
+                        sx={{
+                          margin: "auto",
+                          backgroundColor: colorArray[index],
+                          width: 24,
+                          height: 24,
+                          fontSize: "0.8rem",
+                        }}
+                      >
+                        {row.name
+                          .split(" ")
+                          .map((name) => name[0])
+                          .join("")
+                          .slice(0, 2)}
+                      </Avatar>
                       {row.name}
                     </TableCell>
                     <TableCell align="center">
@@ -88,7 +113,11 @@ const Receivables = () => {
                       )}
                     </TableCell>
                     <TableCell align="center">
-                      <Button variant="text" size="small">
+                      <Button
+                        variant="text"
+                        size="small"
+                        onClick={() => navigate("/")}
+                      >
                         Authorize credit
                       </Button>
                     </TableCell>

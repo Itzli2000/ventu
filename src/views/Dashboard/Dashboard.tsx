@@ -9,11 +9,13 @@ import {
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Box } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 import Chart from "./components/Chart/Chart";
 import ExchangeRate from "./components/ExchangeRate/ExchangeRate";
 import { ActionButton, CustomCard, Title } from "./Dashboard.styled";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   return (
     <Box py={1} px={2}>
       <Title>Hi, Santiago.</Title>
@@ -30,7 +32,11 @@ const Dashboard = () => {
                 }}
               >
                 <Typography>Account Balance</Typography>
-                <Button size="small" variant="outlined">
+                <Button
+                  size="small"
+                  variant="outlined"
+                  onClick={() => navigate("/receivables")}
+                >
                   Cashout
                 </Button>
               </CardContent>
@@ -85,7 +91,7 @@ const Dashboard = () => {
           <Grid xs={12}>
             <Chart
               title="Receivables"
-              action={() => console.log("action")}
+              action={() => navigate("/receivables")}
               color={0}
             />
           </Grid>
@@ -95,7 +101,7 @@ const Dashboard = () => {
             <ExchangeRate />
           </Grid>
           <Grid xs={12}>
-            <Chart title="Payables" action={() => console.log("action")} />
+            <Chart title="Payables" action={() => navigate("/receivables")} />
           </Grid>
         </Grid>
       </Grid>

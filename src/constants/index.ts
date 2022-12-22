@@ -32,3 +32,16 @@ export const navigationItems = [
 ];
 
 export const dollarValue = 20.2;
+
+export const colorArray = [
+  "#E666B3",
+  "#33991A",
+  "#CC9999",
+  "#B3B31A",
+  "#00E680",
+  "#4D8066",
+  "#809980",
+  "#E6FF80",
+  "#1AFF33",
+  "#999933",
+];
