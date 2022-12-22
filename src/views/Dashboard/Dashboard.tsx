@@ -18,7 +18,7 @@ const Dashboard = () => {
     <Box py={1} px={2}>
       <Title>Hi, Santiago.</Title>
       <Grid container spacing={2} alignItems="stretch">
-        <Grid xs={12} lg={6}>
+        <Grid xs={12} md={6}>
           <Grid xs={12}>
             <Card sx={{ padding: "1rem" }}>
               <CardContent
@@ -84,18 +84,18 @@ const Dashboard = () => {
           </Grid>
           <Grid xs={12}>
             <Chart
-              title="my title"
+              title="Receivables"
               action={() => console.log("action")}
               color={0}
             />
           </Grid>
         </Grid>
-        <Grid xs={12} lg={6}>
+        <Grid xs={12} md={6}>
           <Grid xs={12}>
             <ExchangeRate />
           </Grid>
           <Grid xs={12}>
-            <Chart title="my title" action={() => console.log("action")} />
+            <Chart title="Payables" action={() => console.log("action")} />
           </Grid>
         </Grid>
       </Grid>

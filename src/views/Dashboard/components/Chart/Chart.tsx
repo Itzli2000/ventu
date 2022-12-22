@@ -1,4 +1,5 @@
-import { Paper, Typography } from "@mui/material";
+import { Button, Paper, Typography } from "@mui/material";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -72,13 +73,22 @@ const Chart: React.FC<IChartProps> = ({ title, action, color = 1 }) => {
       setSecondDataset(
         Array.from({ length: 6 }, () => Math.floor(Math.random() * 40000))
       );
-    }, 7000);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <Paper>
-      <Typography>{title}</Typography>
+    <Paper sx={{ padding: "1rem" }}>
+      <Grid2 container>
+        <Grid2 xs={8}>
+          <Typography>{title}</Typography>
+        </Grid2>
+        <Grid2 xs={4} sx={{ display: "flex", justifyContent: "flex-end" }}>
+          <Button variant="outlined" size="small" onClick={action}>
+            View All
+          </Button>
+        </Grid2>
+      </Grid2>
       <Bar options={options.options} data={options.data} />
     </Paper>
   );

@@ -11,10 +11,10 @@ export interface IMainLayoutProps {
 const MainLayout: React.FC<IMainLayoutProps> = () => {
   return (
     <Grid container minHeight="100vh">
-      <Grid xs={12} lg={2}>
+      <Grid xs={12} md={2}>
         <Navigation />
       </Grid>
-      <Grid xs={12} lg={10} sx={{ backgroundColor: "#efefef" }}>
+      <Grid xs={12} md={10} sx={{ backgroundColor: "#efefef" }}>
         <Header />
         <Outlet />
       </Grid>
