@@ -13,6 +13,7 @@ import {
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { DateTime } from "luxon";
 import { invoices } from "../../constants/invoices";
+import { currencyFormatter } from "../../utils";
 import { renderCargoStatus, renderPaymentStatus } from "./components/Chips";
 import { Title } from "./Receivables.styled";
 
@@ -36,7 +37,7 @@ const Receivables = () => {
             sx={{ backgroundColor: "#ffffff" }}
           />
         </Grid2>
-        <Grid2>
+        <Grid2 xs={12}>
           <TableContainer>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
@@ -73,7 +74,9 @@ const Receivables = () => {
                         { locale: "en" }
                       )}
                     </TableCell>
-                    <TableCell align="center">{row.amount}</TableCell>
+                    <TableCell align="center">
+                      {currencyFormatter.format(row.amount)}
+                    </TableCell>
                     <TableCell align="center">{row.typeOfPayment}</TableCell>
                     <TableCell align="center">
                       {row.installmentsPayed}/10
@@ -84,7 +87,11 @@ const Receivables = () => {
                         { locale: "en" }
                       )}
                     </TableCell>
-                    <TableCell align="center">actions</TableCell>
+                    <TableCell align="center">
+                      <Button variant="text" size="small">
+                        Authorize credit
+                      </Button>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
