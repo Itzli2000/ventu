@@ -36,7 +36,7 @@ const Navigation = () => {
                   </ListItemIcon>
                   <ListItemText
                     primaryTypographyProps={{
-                      variant: "subtitle2",
+                      variant: "body1",
                     }}
                     primary={item.name}
                   />

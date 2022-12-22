@@ -1,6 +1,7 @@
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { Typography } from "@mui/material";
 import { DateTime } from "luxon";
+import { dollarValue } from "../../constants";
 import HeaderWrapper, {
   NotificationBadge,
   NotificationsContainer,
@@ -9,10 +10,10 @@ import HeaderWrapper, {
 const Header = () => {
   return (
     <HeaderWrapper p={1}>
-      <Typography>1 USD = 20.20 MXN</Typography>
+      <Typography>1 USD = {(1 * dollarValue).toFixed(2)} MXN</Typography>
       <NotificationsContainer>
         <Typography>
-          {DateTime.now().toLocaleString(DateTime.DATE_MED)}
+          {DateTime.now().toLocaleString(DateTime.DATE_MED, { locale: "en" })}
         </Typography>
         <NotificationBadge badgeContent={1} color="error">
           <NotificationsIcon color="action" />

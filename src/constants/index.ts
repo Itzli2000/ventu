@@ -30,3 +30,5 @@ export const navigationItems = [
     icon: "Settings",
   },
 ];
+
+export const dollarValue = 20.2;
