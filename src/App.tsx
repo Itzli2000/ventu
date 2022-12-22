@@ -1,34 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { createTheme } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/system";
+import { useMemo } from "react";
+import { Route, Routes } from "react-router-dom";
+import MainLayout from "./components/Layout/MainLayout";
+import Dashboard from "./views/Dashboard/Dashboard";
+import Receivables from "./views/Receivables/Receivables";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const theme = useMemo(() => createTheme({}), []);
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
-}
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/receivables" element={<Receivables />} />
+          <Route path="*" element={<Dashboard />} />
+        </Route>
+      </Routes>
+    </ThemeProvider>
+  );
+};
 
-export default App
+export default App;
